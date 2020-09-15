@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/sj/coding/c'
+let g:netrw_dirhist_1='/home/sj/coding/hugo-blog/content/posts'
+let g:netrw_dirhist_0='/home/sj/coding/hugo-blog/content'
+let g:netrw_dirhist_9='/home/sj/coding/hugo-blog'
+let g:netrw_dirhist_8='/home/sj/coding/hugo-blog/content'
+let g:netrw_dirhist_7='/home/sj/coding/hugo-blog/content/posts'
+let g:netrw_dirhist_6='/home/sj/coding/hugo-blog/content'
+let g:netrw_dirhist_5='/home/sj/coding/hugo-blog'
+let g:netrw_dirhist_4='/home/sj/.oh-my-zsh'
+let g:netrw_dirhist_3='/home/sj/coding/hugo-blog/content/posts'

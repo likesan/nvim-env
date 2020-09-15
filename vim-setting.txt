@@ -1,0 +1,124 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" add ctrlp.vim - find easily folder or file in NERDTree
+nmap <c-x> :CtrlP <CR>
+let g:NERDTreeChDirMode       = 2
+let g:ctrlp_working_path_mode = 'rw'
+inoremap jj <ESC>
+
+
+"Shortcuts
+" use clipboard c+v / c+x / c+p
+:set clipboard=unnamed
+" Fold functions automatically
+set foldmethod=indent
+set foldlevel=0
+set foldclose=all
+
+" */ becomes commenting a line
+nnoremap gcc I/* <ESC>A */<ESC>
+
+
+vmap <C-c> "*y     " Yank current selection into system clipboard
+nmap <C-c> "*Y     " Yank current line into system clipboard (if nothing is selected)
+nmap <C-v> "*p     " Paste from system clipboard
+" Create markmap from the whole file
+nmap <Leader>m <Plug>(coc-markmap-create)
+" Create markmap from the selected lines
+vmap <Leader>m <Plug>(coc-markmap-create-v)" 
+" Markdown preview option
+nmap <c-w> <Plug>MarkdownPreviewToggle
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+" Ack setting
+
+let g:ack_autofold_results = 0
+map <leader>a :Ack 
+
+" NERDTree auto open when vim starts up
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let g:NERDTreeChDirMode = 2
+" NERDTree shortcut
+map <C-n> :NERDTreeToggle<CR>
+
+
+" Languagetool Jar
+let g:languagetool_jar='$HOME/languagetool/languagetool-standalone/target/LanguageTool-3.3-SNAPSHOT/LanguageTool-3.3-SNAPSHOT/languagetool-commandline.jar'
+
+
+"Commands
+command! -range=% Markmap CocCommand markmap.create <line1> <line2>
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+:let g:languagetool_jar='$HOME/languagetool/languagetool-standalone/target/LanguageTool-3.7-SNAPSHOT/LanguageTool-3.7-SNAPSHOT/languagetool-commandline.jar'
+:set spell
+:set number
+
+" Ag setting
+let g:ag_prg="<custom-ag-path-goes-here> --vimgrep"
+let g:ag_working_path_mode="r"
+
+" Markdown Setting
+" Link autocomplete with 'ge'
+:let g:vim_markdown_autowrite = 1
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'file:///home/gmarik/path/to/plugin'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'junegunn/seoul256.vim'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'dpelle/vim-LanguageTool'
+Plugin 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plugin 'sedm0784/vim-you-autocorrect'
+Plugin 'mileszs/ack.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mzlogin/vim-markdown-toc'
+
+call vundle#end()
+filetype plugin indent on
+syntax enable
